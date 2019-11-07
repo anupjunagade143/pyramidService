@@ -21,10 +21,14 @@ public class ValidateServiceImpl implements ValidateService {
 		}
 		List<Integer> valueCntList = alphabetCountMap.values().stream().sorted().collect(Collectors.toList());
 
-		for (int i = 1; i < valueCntList.size(); i++) {
-			if ((valueCntList.get(i) != valueCntList.get(i - 1) + 1)) {
-				result = false;
-				break;
+		if (valueCntList.get(0) != 1) {
+			result = false;
+		} else {
+			for (int i = 1; i < valueCntList.size(); i++) {
+				if ((valueCntList.get(i) != valueCntList.get(i - 1) + 1)) {
+					result = false;
+					break;
+				}
 			}
 		}
 		return result;
